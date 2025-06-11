@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Golfzone Daventry - Modernized</title>
+    <title>The Golfzone Daventry - Professional Golf Lessons & Equipment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
             --text-color: #333333;
             --light-bg-color: #f9f9f9;
             --white-color: #ffffff;
-            --header-height: 70px;
+            --header-height: 80px;
             --card-border-radius: 12px;
             --card-shadow: 0 5px 20px rgba(0,0,0,0.07);
             --card-hover-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
@@ -56,10 +56,9 @@
         }
 
         h1 { font-size: 2.8rem; }
-        h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; } /* Increased margin */
+        h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
         h3 { font-size: 1.5rem; }
         h4 { font-size: 1.2rem; color: var(--secondary-color); margin-top: 1.5rem; }
-
 
         p {
             margin-bottom: 1rem;
@@ -88,6 +87,49 @@
             background-color: var(--white-color);
         }
 
+        /* Custom Logo Styles */
+        .custom-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-main {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            font-weight: 400;
+            margin-top: -2px;
+        }
+
         /* Header */
         .main-header {
             background-color: var(--white-color);
@@ -105,11 +147,6 @@
             justify-content: space-between;
             align-items: center;
             height: 100%;
-        }
-
-        .main-header #logo {
-            height: 50px;
-            width: auto;
         }
 
         .main-nav ul {
@@ -151,47 +188,77 @@
         /* Hero Section */
         #home {
             padding-top: calc(var(--header-height) + 4rem);
-            background: linear-gradient(rgba(46, 125, 50, 0.05), rgba(46, 125, 50, 0.05)), var(--light-bg-color); /* Softer gradient */
+            background: linear-gradient(rgba(46, 125, 50, 0.05), rgba(46, 125, 50, 0.05)), var(--light-bg-color);
             text-align: center;
         }
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         .hero-content .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             color: var(--secondary-color);
+        }
+        .hero-content .location {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            font-style: italic;
         }
         .hero-main-image-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin: 2rem 0;
         }
         .hero-main-image {
             max-width: 200px;
             border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        .hero-logo {
-            max-height: 60px;
+        .pga-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .pga-logo {
+            max-height: 80px;
+            width: auto;
+        }
+        .pga-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
         }
         .sale-banner {
-            background-color: var(--accent-color);
+            background: linear-gradient(45deg, var(--accent-color), #FFD54F);
             color: var(--text-color);
-            padding: 1rem 2rem; /* Added more padding */
+            padding: 1.2rem 2.5rem;
             border-radius: var(--card-border-radius);
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-transform: uppercase;
             margin: 2rem auto;
             display: inline-block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+            letter-spacing: 1px;
+        }
+
+        /* Foremost Banner */
+        .foremost-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            padding: 1rem 0;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
         }
 
         /* About Section */
@@ -212,9 +279,44 @@
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
         }
-        .pga-logo {
-            max-width: 150px;
-            margin: 1rem auto 0; /* Centered if alone */
+        .pga-credentials {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .pga-credentials .pga-logo {
+            max-height: 60px;
+        }
+
+        /* Services highlight */
+        .services-highlight {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            padding: 2rem;
+            border-radius: var(--card-border-radius);
+            margin: 2rem 0;
+        }
+        .services-highlight h4 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            list-style: none;
+        }
+        .services-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .services-list li::before {
+            content: '⛳';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
         }
 
         /* Golf Lessons Section */
@@ -232,32 +334,43 @@
             margin-bottom: 2rem;
         }
         .price-card {
-            background-color: var(--white-color); /* Changed to white */
-            padding: 2rem; /* Increased padding */
+            background-color: var(--white-color);
+            padding: 2rem;
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex; /* For vertical centering if needed */
+            display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         .price-card:hover {
-            transform: translateY(-8px) scale(1.02); /* More pronounced hover */
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--card-hover-shadow);
         }
         .price-card h4 {
             font-size: 1.1rem;
-            margin-bottom: 0.75rem; /* Adjusted margin */
-            color: var(--secondary-color); /* Use secondary color for titles */
+            margin-bottom: 0.75rem;
+            color: var(--secondary-color);
         }
         .price-card .price {
-            font-size: 2.2rem; /* Larger price */
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-         .price-card .duration-package { /* New class for "30 Minutes" or "4 x 30 Minute Lessons" */
+         .price-card .duration-package {
             font-size: 1rem;
             color: var(--text-color);
             font-weight: 600;
@@ -265,22 +378,21 @@
         }
 
         .lesson-includes, .junior-info {
-            margin-top: 2rem; /* Increased margin */
-            padding: 1.5rem; /* Increased padding */
-            background-color: #e8f5e9; /* Light green accent bg */
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #e8f5e9;
             border-radius: var(--card-border-radius);
-            font-size: 0.95rem; /* Slightly larger font */
+            font-size: 0.95rem;
             text-align: center;
         }
         .lesson-includes strong, .junior-info strong {
             color: var(--primary-color);
         }
 
-
-        /* Services Section - MODIFIED for 2x2 layout */
+        /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
         .service-card {
@@ -289,30 +401,52 @@
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         .service-card:hover {
-            transform: translateY(-8px); /* Consistent hover */
+            transform: translateY(-8px);
             box-shadow: var(--card-hover-shadow);
         }
         .service-card h3 {
             margin-bottom: 0.75rem;
         }
 
-        /* Shop & Studio Section - MODIFIED for same height cards */
+        /* Shop & Studio Section */
         .shop-studio-content {
             display: flex;
-            gap: 2rem; /* Reduced gap slightly */
-            align-items: stretch; /* Makes cards same height */
+            gap: 2rem;
+            align-items: stretch;
         }
         .shop-info, .studio-info {
-            flex: 1; /* Distribute space equally */
+            flex: 1;
             background: var(--white-color);
             padding: 2rem;
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
-            display: flex; /* Added for internal alignment */
-            flex-direction: column; /* Added for internal alignment */
-             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .shop-info::before, .studio-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
          .shop-info:hover, .studio-info:hover {
             transform: translateY(-8px);
@@ -323,9 +457,9 @@
         }
         .foremost-logo {
             max-width: 120px;
-            margin-top: auto; /* Pushes to bottom if card stretches */
-            padding-top: 1rem; /* Space above logo */
-            align-self: center; /* Center logo if card wider */
+            margin-top: auto;
+            padding-top: 1rem;
+            align-self: center;
         }
         .opening-hours {
             margin-top: 1.5rem;
@@ -333,11 +467,10 @@
         }
         .opening-hours h4 { margin-bottom: 0.5rem;}
 
-
         /* Contact Section */
         .contact-intro {
             max-width: 600px;
-            margin: 0 auto 2rem auto; /* Added bottom margin */
+            margin: 0 auto 2rem auto;
             text-align: center;
         }
         .contact-intro p {
@@ -354,7 +487,7 @@
         /* Contact Form */
         .contact-form-container {
             max-width: 700px;
-            margin: 2rem auto 0; /* Margin above form */
+            margin: 2rem auto 0;
             padding: 2.5rem;
             background-color: var(--white-color);
             border-radius: var(--card-border-radius);
@@ -414,7 +547,6 @@
             transform: translateY(-2px);
         }
 
-
         /* Footer */
         .main-footer {
             background-color: var(--text-color);
@@ -435,7 +567,7 @@
         }
 
         /* Responsive Styles */
-        @media (max-width: 992px) { /* For services grid earlier */
+        @media (max-width: 992px) {
             .services-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
@@ -474,6 +606,7 @@
 
             .hero-main-image-container {
                 flex-direction: column;
+                gap: 2rem;
             }
 
             .about-content, .shop-studio-content {
@@ -481,7 +614,7 @@
             }
             .about-image img { max-width: 250px; }
 
-            .services-grid { /* Ensure it falls to 1 column on smaller mobile */
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -491,18 +624,32 @@
             .contact-form-container {
                 padding: 1.5rem;
             }
+
+            .services-list {
+                grid-template-columns: 1fr;
+            }
         }
 
     </style>
 </head>
 <body>
+    <div class="foremost-banner">
+        <div class="container">
+            FOREMOST GOLF IS THE LARGEST GOLF RETAIL GROUP IN THE UK
+        </div>
+    </div>
+
     <header class="main-header">
         <div class="container">
-            <a href="#home">
-                <img src="https://static.wixstatic.com/media/5e8a1a_66fbacfea22e419a88fdeebe4807fc70~mv2.jpg" alt="The Golfzone Logo" id="logo">
+            <a href="#home" class="custom-logo">
+                <div class="logo-icon">⛳</div>
+                <div class="logo-text">
+                    <div class="logo-main">GOLFZONE</div>
+                    <div class="logo-sub">DAVENTRY</div>
+                </div>
             </a>
             <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                ☰ <!-- Hamburger Icon -->
+                ☰
             </button>
             <nav class="main-nav">
                 <ul>
@@ -523,12 +670,33 @@
                 <div class="hero-content">
                     <h1>Welcome to The Golfzone</h1>
                     <p class="subtitle">at Daventry & District Golf Club</p>
-                    <div class="sale-banner">Sale Now On. Update your performance</div>
+                    <p class="location">Northamptonshire PGA Teaching Professional</p>
+                    
+                    <div class="sale-banner">✨ Sale Now On ✨</div>
+                    
                     <div class="hero-main-image-container">
                          <img src="https://static.wixstatic.com/media/5e8a1a_2755f36ba4b84922a436b9cc72707730~mv2.jpg" alt="Richard Mudge - PGA Teaching Professional" class="hero-main-image">
-                         <img src="https://static.wixstatic.com/media/5e8a1a_a39fcd9ced18420a8d94390514310210~mv2.png" alt="PGA Logo" class="hero-logo pga-logo">
+                         <div class="pga-logo-container">
+                             <img src="https://static.wixstatic.com/media/5e8a1a_a39fcd9ced18420a8d94390514310210~mv2.png" alt="PGA Logo" class="pga-logo">
+                             <p class="pga-text">PGA Golf Professional</p>
+                         </div>
                     </div>
-                    <p>Your premier destination for golf lessons, top-quality equipment, and advanced studio analysis. Elevate your game with expert guidance and state-of-the-art facilities.</p>
+                    
+                    <p>Your premier destination for professional golf lessons, top-quality equipment, and advanced studio analysis. Elevate your game with expert guidance and state-of-the-art facilities.</p>
+                    
+                    <div class="services-highlight">
+                        <h4>Richard Mudge specialises in:</h4>
+                        <ul class="services-list">
+                            <li>Golf lessons for all abilities</li>
+                            <li>Coaching for individuals</li>
+                            <li>Group lessons</li>
+                            <li>Detailed analysis of ball flight</li>
+                            <li>Equipment checks</li>
+                            <li>Advice on clubs and equipment</li>
+                            <li>Customised club fitting</li>
+                            <li>Indoor Golf Simulator Studio</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -539,13 +707,17 @@
                 <div class="about-content">
                     <div class="about-text">
                         <h3>Richard Mudge</h3>
-                        <p><strong>PGA Golf Professional</strong></p>
+                        <p><strong>Northamptonshire PGA Teaching Professional</strong></p>
                         <p>With years of experience and a passion for golf, Richard Mudge is dedicated to helping golfers of all abilities improve their game. As a Class AA Level III PGA Coach, Richard offers personalized instruction tailored to your unique swing and goals.</p>
                         <p>Whether you're a beginner looking to learn the fundamentals or an experienced player aiming to fine-tune your skills, Richard provides expert advice and a supportive learning environment.</p>
+                        <p>Richard specializes in both individual coaching and group lessons, utilizing advanced technology including detailed ball flight analysis, HMT, and GC2 launch monitor to help you understand and perfect your game.</p>
                     </div>
                     <div class="about-image">
                         <img src="https://static.wixstatic.com/media/5e8a1a_2755f36ba4b84922a436b9cc72707730~mv2.jpg" alt="Richard Mudge">
-                        <img src="https://static.wixstatic.com/media/5e8a1a_a39fcd9ced18420a8d94390514310210~mv2.png" alt="PGA Logo" class="pga-logo">
+                        <div class="pga-credentials">
+                            <img src="https://static.wixstatic.com/media/5e8a1a_a39fcd9ced18420a8d94390514310210~mv2.png" alt="PGA Logo" class="pga-logo">
+                            <p class="pga-text">Class AA Level III PGA Coach</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -556,7 +728,7 @@
                 <h2>Learn At Your Own Pace</h2>
                 <div class="lesson-intro">
                     <p>I specialise in coaching for individuals and groups, from complete beginners to elite golfers. It is important that we discuss what you hope to achieve before we start, to help you meet your objectives and enjoy the lessons.</p>
-                    <p>Tuition is either on the outdoor range or indoors in the Golf Studio.</p>
+                    <p>Tuition is available either on the outdoor range or indoors in the Golf Studio, with all lessons including advanced technology analysis.</p>
                 </div>
 
                 <h4>Individual Tuition Fees</h4>
@@ -582,39 +754,39 @@
                         <p class="price">£180</p>
                     </div>
                 </div>
-                <p style="text-align:center;">Purchase a package and get preferential rates on future lessons and Golf Studio hire.</p>
+                <p style="text-align:center; font-weight: 600;">Purchase a package and get preferential rates on future lessons and Golf Studio hire.</p>
 
                 <div class="lesson-includes">
-                    <p><strong>*Video analysis, use of HMT and GC2 launch monitor is included in all individual lessons and packages.</strong></p>
+                    <p><strong>✅ Video analysis, use of HMT and GC2 launch monitor is included in all individual lessons and packages.</strong></p>
                 </div>
 
                 <div class="junior-info">
-                    <h4>Junior Golfers</h4>
+                    <h4>Junior Golfers & Group Sessions</h4>
                     <p>Juniors (under 18 years) receive a reduction of <strong>40% on the full lesson price</strong>.</p>
-                    <p>I also run <strong>Saturday group sessions</strong> for juniors.</p>
+                    <p>I also run <strong>Saturday group sessions</strong> for juniors and offer group lessons for all skill levels.</p>
                 </div>
             </div>
         </section>
 
         <section id="services">
             <div class="container">
-                <h2>Other Pro Services</h2>
+                <h2>Professional Services</h2>
                 <div class="services-grid">
                      <div class="service-card">
                         <h3>Detailed Ball Flight Analysis</h3>
-                        <p>Utilize our studio technology to understand and perfect your shots.</p>
+                        <p>Utilize our advanced studio technology including HMT and GC2 launch monitor to understand and perfect your shots with precise data analysis.</p>
                     </div>
                     <div class="service-card">
                         <h3>Customised Club Fitting</h3>
-                        <p>Ensure your clubs are perfectly matched to your swing for optimal performance.</p>
+                        <p>Ensure your clubs are perfectly matched to your swing for optimal performance. Professional fitting service available.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Equipment Checks</h3>
-                        <p>Let us assess your current gear and provide expert recommendations.</p>
+                        <h3>Equipment Checks & Analysis</h3>
+                        <p>Comprehensive assessment of your current gear with expert recommendations for improvement.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Advice on Clubs & Equipment</h3>
-                        <p>Unbiased guidance to help you choose the right equipment for your game.</p>
+                        <h3>Expert Advice on Clubs & Equipment</h3>
+                        <p>Unbiased guidance to help you choose the right equipment for your game and budget.</p>
                     </div>
                 </div>
             </div>
@@ -626,16 +798,16 @@
                 <div class="shop-studio-content">
                     <div class="shop-info">
                         <h3>Well-Stocked Golf Shop</h3>
-                        <p>Browse a wide selection of major makes of clubs, accessories, and clothing. We offer competitive pricing and expert advice to help you find exactly what you need.</p>
-                        <p>As part of the Foremost Golf retail group, we ensure quality and value.</p>
+                        <p>Browse a comprehensive selection of major makes of clubs, accessories, and clothing. We offer competitive pricing and expert advice to help you find exactly what you need.</p>
+                        <p>As part of the Foremost Golf retail group - the largest golf retail group in the UK - we ensure quality, value, and the latest equipment.</p>
                         <img src="https://static.wixstatic.com/media/5e8a1a_71f92993131b4877bb5f4054095ea66a~mv2.gif" alt="Foremost Golf Logo" class="foremost-logo">
                     </div>
                     <div class="studio-info">
                         <h3>Indoor Golf Simulator Studio</h3>
-                        <p>Our state-of-the-art indoor golf simulator provides a perfect environment for practice, lessons, and custom fitting, regardless of the weather. Get precise data on your swing and ball flight.</p>
+                        <p>Our state-of-the-art indoor golf simulator provides a perfect environment for practice, lessons, and custom fitting, regardless of the weather. Get precise data on your swing and ball flight with our advanced technology.</p>
                         <div class="opening-hours">
                             <h4>Shop Opening Hours:</h4>
-                            <p>8:30 am to 6:00 pm daily</p>
+                            <p><strong>8:30 am to 6:00 pm daily</strong></p>
                             <p>(or later by prior appointment for lessons or Golf Studio hire)</p>
                         </div>
                     </div>
@@ -651,14 +823,14 @@
                     <p><strong>DAVENTRY & DISTRICT GOLF CLUB</strong><br>
                     Norton Road, Daventry NN11 2LS</p>
                     <p>Contact Richard Mudge on:<br>
-                    <a href="tel:07968064686">07968 064686</a></p>
+                    <a href="tel:07968064686">📞 07968 064686</a></p>
                     <p>Email:<br>
-                    <a href="mailto:richard.mudge@foremostgolf.com">richard.mudge@foremostgolf.com</a></p>
+                    <a href="mailto:richard.mudge@foremostgolf.com">✉️ richard.mudge@foremostgolf.com</a></p>
                 </div>
 
                 <div class="contact-form-container">
                     <h3>Leave a Message</h3>
-                    <form action="YOUR_FORMSPREE_ENDPOINT" method="POST"> <!-- Replace with your Formspree endpoint -->
+                    <form action="YOUR_FORMSPREE_ENDPOINT" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
@@ -677,7 +849,7 @@
                         </div>
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
-                    <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem;">
+                    <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem; color: #666;">
                         Note: For this form to be fully functional, the 'action' attribute needs to be set to a service like Formspree.io.
                     </p>
                 </div>
@@ -687,7 +859,8 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>© <span id="currentYear"></span> The Golfzone Daventry. All Rights Reserved. Modernized with care.</p>
+            <p>© <span id="currentYear"></span> The Golfzone Daventry. All Rights Reserved.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Professional Golf Lessons • Equipment • Custom Fitting • Northamptonshire</p>
         </div>
     </footer>
 
@@ -700,7 +873,7 @@
             const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
             menuToggle.setAttribute('aria-expanded', !isExpanded);
             mainNav.classList.toggle('active');
-            menuToggle.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰'; // Close icon / Hamburger
+            menuToggle.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰';
         });
 
         // Close mobile menu when a link is clicked
@@ -723,7 +896,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - (headerHeight + 70) ) { // Increased offset a bit
+                if (pageYOffset >= sectionTop - (headerHeight + 70) ) {
                     current = section.getAttribute('id');
                 }
             });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Golfzone Daventry - Modernized</title>
+    <title>The Golfzone Daventry - Professional Golf Lessons & Equipment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -12,13 +12,19 @@
             --primary-color: #2E7D32; /* Deep Green */
             --secondary-color: #4CAF50; /* Lighter Green */
             --accent-color: #FFC107; /* Gold/Yellow */
+            --accent-color-rgb: 255, 193, 7;
             --text-color: #333333;
             --light-bg-color: #f9f9f9;
             --white-color: #ffffff;
-            --header-height: 70px;
+            --header-height: 80px;
             --card-border-radius: 12px;
             --card-shadow: 0 5px 20px rgba(0,0,0,0.07);
             --card-hover-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+            --bento-card-bg: var(--white-color);
+            --bento-card-radius: 16px;
+            --bento-card-padding: 1.5rem;
+            --bento-text-color: var(--text-color);
+            --bento-heading-color: var(--primary-color);
         }
 
         *,
@@ -39,6 +45,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--light-bg-color);
+            padding-top: var(--header-height); /* Push content below fixed header */
         }
 
         .container {
@@ -56,8 +63,8 @@
         }
 
         h1 { font-size: 2.8rem; }
-        h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; } /* Increased margin */
-        h3 { font-size: 1.5rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
+        h3 { font-size: 1.8rem; /* Adjusted for eBay title in hero */ text-align: center; }
         h4 { font-size: 1.2rem; color: var(--secondary-color); margin-top: 1.5rem; }
 
 
@@ -78,6 +85,12 @@
             max-width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), box-shadow 0.28s cubic-bezier(0.4,0,0.2,1);
+        }
+        img:hover, .info-img:hover, .junior-golf-image:hover, .shop-studio-img:hover, .services-uniform-img:hover, .hero-main-image:hover, .bento-item.has-bg-image:hover img {
+            transform: scale(1.06) translateY(-4px);
+            box-shadow: 0 8px 32px rgba(46,125,50,0.18), 0 2px 8px rgba(0,0,0,0.10);
+            z-index: 2;
         }
 
         section {
@@ -86,6 +99,22 @@
 
         section:nth-child(even) {
             background-color: var(--white-color);
+        }
+        #home section:nth-child(even) { /* Prevent ebay section in home from getting white bg */
+            background-color: transparent;
+        }
+
+
+        /* Custom Logo Styles */
+        .custom-logo {
+            display: flex;
+            align-items: center;
+            height: 100%; /* Helps with vertical alignment */
+        }
+
+        .custom-logo img {
+            max-height: 60px; /* Appropriate size for the 80px header */
+            width: auto;
         }
 
         /* Header */
@@ -105,11 +134,6 @@
             justify-content: space-between;
             align-items: center;
             height: 100%;
-        }
-
-        .main-header #logo {
-            height: 50px;
-            width: auto;
         }
 
         .main-nav ul {
@@ -150,55 +174,161 @@
 
         /* Hero Section */
         #home {
-            padding-top: calc(var(--header-height) + 4rem);
-            background: linear-gradient(rgba(46, 125, 50, 0.05), rgba(46, 125, 50, 0.05)), var(--light-bg-color); /* Softer gradient */
+            padding-top: 2rem; /* Reduced gap between banner and content */
+            background: linear-gradient(rgba(46, 125, 50, 0.05), rgba(46, 125, 50, 0.05)), var(--light-bg-color);
             text-align: center;
         }
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            font-style: italic;
+        }
+        .hero-content h1 {
+            margin-bottom: 0.3rem;
         }
         .hero-content .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-top: 0;
+            margin-bottom: 0.1rem;
             color: var(--secondary-color);
+        }
+        .hero-content .location {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-style: italic;
+        }
+        .hero-logo {
+            max-width: 600px; /* Made logo larger */
+            margin: 0 auto 2rem;
+            background-color: var(--white-color); /* Added bg for padding and shadow */
+            padding: 1.5rem; /* Added padding */
+            border-radius: var(--card-border-radius); /* Rounded corners */
+            box-shadow: var(--card-shadow); /* Added shadow for integration */
         }
         .hero-main-image-container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            align-items: flex-start;
+            gap: 3rem;
+            margin: 2rem 0;
         }
+
         .hero-main-image {
-            max-width: 200px;
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            box-shadow: none;
         }
-        .hero-logo {
-            max-height: 60px;
+        .pga-logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
         }
-        .sale-banner {
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 1rem 2rem; /* Added more padding */
-            border-radius: var(--card-border-radius);
+        .pga-logo {
+            max-height: 286px;
+            width: auto;
+        }
+        .pga-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        .sale-banner-container {
+            text-align: center;
+            margin: 2.5rem 0 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sale-banner.style-enhanced {
+            display: flex;
+            align-items: center;
+            gap: 0.7em;
+            background: linear-gradient(90deg, #b7ffbf 0%, #43a047 30%, #1b5e20 60%, #d4fc79 100%);
+            color: #fff;
+            padding: 1.2rem 0;
+            border-radius: 50px;
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             text-transform: uppercase;
-            margin: 2rem auto;
-            display: inline-block;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            letter-spacing: 1.5px;
+            box-shadow: 0 8px 32px rgba(67,160,71,0.18),
+                        0 3px 8px rgba(0,0,0,0.10);
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            border: 2px solid transparent;
+            width: 100%;
+            max-width: 900px;
+            justify-content: center;
+        }
+
+        .sale-banner.style-enhanced:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(var(--accent-color-rgb, 255,193,7), 0.35),
+                        0 3px 8px rgba(0,0,0,0.12);
+        }
+
+        .sale-banner.style-enhanced .sale-icon {
+            fill: currentColor;
+            width: 1.1em;
+            height: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Foremost Banner */
+        .foremost-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        /* Flex container for text and logo */
+        .foremost-banner-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.7em;
+        }
+
+        .foremost-banner-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        .foremost-banner-logo {
+            height: 2.5em;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        /* Responsive adjustments for the banner if needed */
+        @media (max-width: 768px) {
+            .foremost-banner-flex {
+                flex-direction: column;
+                gap: 0.5em;
+            }
+            .foremost-banner-text {
+                font-size: 1rem;
+            }
+            .foremost-banner-logo {
+                height: 3em;
+            }
         }
 
         /* About Section */
         .about-content {
             display: flex;
             gap: 3rem;
-            align-items: center;
+            align-items: flex-start;
         }
         .about-text {
             flex: 2;
@@ -211,10 +341,46 @@
             max-width: 300px;
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
+            margin-top: 2.2rem;
         }
-        .pga-logo {
-            max-width: 150px;
-            margin: 1rem auto 0; /* Centered if alone */
+        .pga-credentials {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .pga-credentials .pga-logo {
+            max-height: 60px;
+        }
+
+        /* Services highlight */
+        .services-highlight {
+            background: linear-gradient(135deg, #e2e7e8, #fafaf9);
+            padding: 1rem;
+            border-radius: var(--card-border-radius);
+            margin: 8rem 0 2rem 0;
+        }
+        .services-highlight h4 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            list-style: none;
+        }
+        .services-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .services-list li::before {
+            content: '⛳';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
         }
 
         /* Golf Lessons Section */
@@ -232,32 +398,43 @@
             margin-bottom: 2rem;
         }
         .price-card {
-            background-color: var(--white-color); /* Changed to white */
-            padding: 2rem; /* Increased padding */
+            background-color: var(--white-color);
+            padding: 2rem;
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex; /* For vertical centering if needed */
+            display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         .price-card:hover {
-            transform: translateY(-8px) scale(1.02); /* More pronounced hover */
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--card-hover-shadow);
         }
         .price-card h4 {
             font-size: 1.1rem;
-            margin-bottom: 0.75rem; /* Adjusted margin */
-            color: var(--secondary-color); /* Use secondary color for titles */
+            margin-bottom: 0.75rem;
+            color: var(--secondary-color);
         }
         .price-card .price {
-            font-size: 2.2rem; /* Larger price */
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-         .price-card .duration-package { /* New class for "30 Minutes" or "4 x 30 Minute Lessons" */
+         .price-card .duration-package {
             font-size: 1rem;
             color: var(--text-color);
             font-weight: 600;
@@ -265,22 +442,21 @@
         }
 
         .lesson-includes, .junior-info {
-            margin-top: 2rem; /* Increased margin */
-            padding: 1.5rem; /* Increased padding */
-            background-color: #e8f5e9; /* Light green accent bg */
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #e8f5e9;
             border-radius: var(--card-border-radius);
-            font-size: 0.95rem; /* Slightly larger font */
+            font-size: 0.95rem;
             text-align: center;
         }
         .lesson-includes strong, .junior-info strong {
             color: var(--primary-color);
         }
 
-
-        /* Services Section - MODIFIED for 2x2 layout */
+        /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
         .service-card {
@@ -289,30 +465,52 @@
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
         .service-card:hover {
-            transform: translateY(-8px); /* Consistent hover */
+            transform: translateY(-8px);
             box-shadow: var(--card-hover-shadow);
         }
         .service-card h3 {
             margin-bottom: 0.75rem;
         }
 
-        /* Shop & Studio Section - MODIFIED for same height cards */
+        /* Shop & Studio Section */
         .shop-studio-content {
             display: flex;
-            gap: 2rem; /* Reduced gap slightly */
-            align-items: stretch; /* Makes cards same height */
+            gap: 2rem;
+            align-items: stretch;
         }
         .shop-info, .studio-info {
-            flex: 1; /* Distribute space equally */
+            flex: 1;
             background: var(--white-color);
             padding: 2rem;
             border-radius: var(--card-border-radius);
             box-shadow: var(--card-shadow);
-            display: flex; /* Added for internal alignment */
-            flex-direction: column; /* Added for internal alignment */
-             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .shop-info::before, .studio-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
         }
          .shop-info:hover, .studio-info:hover {
             transform: translateY(-8px);
@@ -323,9 +521,9 @@
         }
         .foremost-logo {
             max-width: 120px;
-            margin-top: auto; /* Pushes to bottom if card stretches */
-            padding-top: 1rem; /* Space above logo */
-            align-self: center; /* Center logo if card wider */
+            margin-top: auto;
+            padding-top: 1rem;
+            align-self: center;
         }
         .opening-hours {
             margin-top: 1.5rem;
@@ -333,11 +531,122 @@
         }
         .opening-hours h4 { margin-bottom: 0.5rem;}
 
+        /* eBay Deals Section Styling - now within #home context */
+        #ebay-deals {
+            padding: 2rem 0 3rem 0;
+            background-color: #f4f7fa !important; /* Light, distinct background for separation */
+        }
+         #ebay-deals h3 { /* Was h2 before */
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .ebay-intro {
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 2rem;
+        }
+        .ebay-intro p {
+            font-size: 1.1rem;
+        }
+        .ebay-slider-container {
+            position: relative;
+            max-width: 900px; /* Adjust as needed */
+            margin: 0 auto;
+            overflow: hidden; /* Important for the sliding effect if slides overflow */
+        }
+        .ebay-slides {
+            display: flex; /* Makes slides sit side-by-side */
+            transition: transform 0.5s ease-in-out; /* Smooth slide transition */
+        }
+        .ebay-slide {
+            min-width: 100%; /* Each slide takes full width of container */
+            padding: 0 1rem; /* Spacing around content within a slide if needed */
+            box-sizing: border-box;
+            display: flex; /* Use flex to arrange items if each slide has multiple products */
+            gap: 1.5rem;
+            justify-content: center; /* Center product cards within the slide */
+            flex-wrap: wrap; /* Allow products to wrap on smaller screens if slide shows multiple */
+        }
+        .ebay-product-card {
+            background: var(--white-color); /* Give cards their own background */
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+            text-align: center;
+            width: calc(33.333% - 1rem); /* For 3 products per slide, adjust as needed */
+            min-width: 220px; /* Minimum width for a product card */
+            margin-bottom: 1rem; /* Space if cards wrap */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ebay-product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .ebay-product-card img {
+            max-height: 180px; /* Or adjust as needed */
+            height: 180px; /* Set a fixed height */
+            width: 100%; /* Make images take the card width */
+            object-fit: contain; /* Scales image while preserving aspect ratio, letterboxing if necessary */
+            margin: 0 auto 1rem auto;
+            border-radius: 8px;
+            background-color: #f0f0f0; /* Light background for images that don't fill space */
+        }
+        .ebay-product-card h4 {
+            font-size: 1.1rem; /* Product title */
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            min-height: 45px; /* Prevent layout jumps */
+        }
+        .ebay-product-card .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        .ebay-product-card .view-on-ebay-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+        .ebay-product-card .view-on-ebay-btn:hover {
+            background-color: #FFCA28; /* Darker accent */
+        }
+        .ebay-slider-nav {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .ebay-slider-nav button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            padding: 0.7rem 1.2rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .ebay-slider-nav button:hover {
+            background-color: var(--secondary-color);
+        }
+        .ebay-slider-nav button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
 
         /* Contact Section */
         .contact-intro {
             max-width: 600px;
-            margin: 0 auto 2rem auto; /* Added bottom margin */
+            margin: 0 auto 2rem auto;
             text-align: center;
         }
         .contact-intro p {
@@ -354,7 +663,7 @@
         /* Contact Form */
         .contact-form-container {
             max-width: 700px;
-            margin: 2rem auto 0; /* Margin above form */
+            margin: 2rem auto 0;
             padding: 2.5rem;
             background-color: var(--white-color);
             border-radius: var(--card-border-radius);
@@ -414,7 +723,6 @@
             transform: translateY(-2px);
         }
 
-
         /* Footer */
         .main-footer {
             background-color: var(--text-color);
@@ -435,15 +743,20 @@
         }
 
         /* Responsive Styles */
-        @media (max-width: 992px) { /* For services grid earlier */
+        @media (max-width: 992px) {
             .services-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .ebay-product-card {
+                width: calc(50% - 1rem); /* 2 products per slide on medium screens */
             }
         }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
+            #home h3, #ebay-deals h3 { font-size: 1.6rem; } /* eBay title responsive */
+
 
             .main-header .container {
                 padding: 0 1rem;
@@ -474,6 +787,7 @@
 
             .hero-main-image-container {
                 flex-direction: column;
+                gap: 2rem;
             }
 
             .about-content, .shop-studio-content {
@@ -481,32 +795,368 @@
             }
             .about-image img { max-width: 250px; }
 
-            .services-grid { /* Ensure it falls to 1 column on smaller mobile */
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            section { padding: 3rem 0; }
+            /* section { padding: 3rem 0; } */ /* Removed to allow #ebay-deals finer control */
             #home { padding-top: calc(var(--header-height) + 3rem); }
+            /* Other sections still need their padding */
+            #about, #golf-lessons, #services, #shop-studio, #contact {
+                 padding: 3rem 0;
+            }
+
 
             .contact-form-container {
                 padding: 1.5rem;
             }
+
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+
+            .ebay-product-card {
+                width: 100%; /* 1 product per slide on small screens */
+            }
+            .ebay-slide {
+                padding: 0 0.5rem;
+            }
+            .hero-main-image-square {
+                width: 160px;
+                height: 160px;
+                padding: 0.7rem;
+            }
+        }
+
+        /* Method 2 - Card-like Specialist Grid */
+        .specialist-grid-m2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .specialist-item-m2 {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75em;
+            /* Optional card-like appearance: */
+            /* padding: 0.5rem; */
+            /* background-color: rgba(255,255,255,0.5); */
+            /* border-radius: 6px; */
+        }
+        .specialist-icon-m2 {
+            flex-shrink: 0;
+            font-size: 1.2em;
+            color: var(--primary-color);
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        .specialist-text-m2 {
+            flex-grow: 1;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+        .specialist-item-m2.card-effect {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(46, 125, 50, 0.10);
+            padding: 1.2rem 1.1rem;
+            font-size: 1rem;
+            color: var(--text-color);
+            text-align: center;
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .specialist-item-m2.card-effect:hover {
+            box-shadow: 0 8px 32px rgba(46, 125, 50, 0.18);
+            transform: translateY(-4px) scale(1.03);
+        }
+
+        .junior-golf-image {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(46,125,50,0.13);
+            background: #fff;
+        }
+
+        .junior-info h4 {
+            margin-bottom: 0.3rem;
+        }
+        .junior-info p {
+            margin-bottom: 0.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .lesson-includes-flex {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+        .lesson-includes-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(46,125,50,0.10);
+            background: #fff;
+        }
+
+        .price-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .price-card-link:focus .price-card,
+        .price-card-link:hover .price-card {
+            box-shadow: 0 12px 32px rgba(46, 125, 50, 0.18), 0 2px 8px rgba(0,0,0,0.10);
+            transform: translateY(-6px) scale(1.04);
+            outline: none;
+        }
+        .price-card-link .price-card {
+            cursor: pointer;
+        }
+
+        .shop-images-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: nowrap;
+        }
+        .shop-studio-img {
+            width: 320px;
+            height: 180px;
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(46,125,50,0.13);
+            background: #fff;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+        @media (max-width: 1100px) {
+            .shop-images-row {
+                gap: 1rem;
+            }
+            .shop-studio-img {
+                width: 220px;
+                height: 124px;
+            }
+        }
+        @media (max-width: 900px) {
+            .shop-images-row {
+                flex-wrap: wrap;
+            }
+            .shop-studio-img {
+                width: 100%;
+                height: auto;
+                max-width: 350px;
+            }
+        }
+
+        .services-uniform-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(46,125,50,0.13);
+            background: #fff;
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .services-uniform-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        .services-uniform-img-top {
+            object-position: top;
+        }
+
+        /* Bento Box Z-Shape Specialist Grid */
+        .bento-grid-specialist {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .bento-item {
+            background-color: var(--bento-card-bg);
+            border-radius: var(--bento-card-radius);
+            padding: var(--bento-card-padding);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-item:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 12px 30px rgba(46, 125, 50, 0.12);
+        }
+        .bento-item.item-large { grid-column: span 2; }
+        .bento-item.item-small { grid-column: span 1; }
+        .bento-item.item-1 { grid-column: 1 / 3; }
+        .bento-item.item-2 { grid-column: 3 / 4; }
+        .bento-item.item-3 { grid-column: 1 / 2; }
+        .bento-item.item-4 { grid-column: 2 / 4; }
+        .bento-item.item-5 { grid-column: 1 / 3; }
+        .bento-item.item-6 { grid-column: 3 / 4; }
+        .bento-item.item-7 { grid-column: 1 / 2; }
+        .bento-item.item-8 { grid-column: 2 / 4; }
+        .bento-item.has-bg-image {
+            background-image: var(--bg-image-url);
+            background-size: cover;
+            background-position: var(--bg-position, center center);
+            background-repeat: no-repeat;
+            color: var(--white-color);
+            position: relative;
+        }
+        .bento-item.has-bg-image::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--bg-color, rgba(0, 0, 0, 0.3));
+            border-radius: var(--bento-card-radius);
+            z-index: 1;
+        }
+        .bento-item .bento-content {
+            position: relative;
+            z-index: 2;
+            padding: 0;
+            margin-top: auto;
+        }
+        .bento-item h5 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: inherit;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .bento-item.has-bg-image[style*="--bg-color: #E6F3FF;"] h5,
+        .bento-item.has-bg-image[style*="--bg-color: #E6F3FF;"] p {
+            color: var(--text-color);
+        }
+        .bento-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: inherit;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        @media (max-width: 992px) {
+            .bento-grid-specialist {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: minmax(160px, auto);
+            }
+            .bento-item.item-1,
+            .bento-item.item-2,
+            .bento-item.item-3,
+            .bento-item.item-4,
+            .bento-item.item-5,
+            .bento-item.item-6,
+            .bento-item.item-7,
+            .bento-item.item-8 {
+                grid-column: span 1;
+            }
+            .bento-item.item-1 { grid-column: 1 / 3; }
+        }
+        @media (max-width: 600px) {
+            .services-highlight h4 { font-size: 1.6rem; margin-bottom: 1.5rem;}
+            .bento-grid-specialist {
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(150px, auto);
+                gap: 0.8rem;
+            }
+            .bento-item.item-large,
+            .bento-item.item-small {
+                grid-column: span 1;
+            }
+            .bento-item {
+                padding: 1rem;
+            }
+            .bento-item h5 { font-size: 1.1rem; }
+            .bento-item p { font-size: 0.85rem; }
+        }
+
+        /* Add shared flex and image class for alignment */
+        .info-flex {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          justify-content: flex-start;
+        }
+        .info-img {
+          width: 110px;
+          height: 110px;
+          object-fit: cover;
+          border-radius: 16px;
+          box-shadow: 0 4px 16px rgba(46,125,50,0.13);
+          background: #fff;
+          flex-shrink: 0;
+        }
+
+        .junior-info .info-flex > div {
+          text-align: center;
+          width: 100%;
+        }
+
+        /* Add card style for contact details */
+        .contact-card {
+          background: #fff;
+          border-radius: 16px;
+          box-shadow: 0 4px 24px rgba(46,125,50,0.13);
+          padding: 2rem 2.5rem;
+          margin: 0 auto 2.5rem auto;
+          max-width: 500px;
+          text-align: left;
+          font-size: 1.08rem;
+          color: var(--text-color);
+        }
+        .contact-card p {
+          margin-bottom: 1.1rem;
+        }
+        .contact-card a {
+          color: var(--primary-color);
+          font-weight: 600;
+          text-decoration: none;
+        }
+        .contact-card a:hover {
+          text-decoration: underline;
         }
 
     </style>
 </head>
 <body>
+    <div class="foremost-banner">
+        <div class="container foremost-banner-flex">
+            <span class="foremost-banner-text">FOREMOST GOLF IS THE LARGEST GOLF RETAIL GROUP IN THE UK</span>
+            <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/foremost.png?v=1749564136" alt="Foremost Golf Logo" class="foremost-banner-logo">
+        </div>
+    </div>
+
     <header class="main-header">
         <div class="container">
-            <a href="#home">
-                <img src="https://static.wixstatic.com/media/5e8a1a_66fbacfea22e419a88fdeebe4807fc70~mv2.jpg" alt="The Golfzone Logo" id="logo">
+            <a href="#home" class="custom-logo">
+                <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/the_gf2.png?v=1749555836" alt="The Golfzone Daventry Logo">
             </a>
             <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                ☰ <!-- Hamburger Icon -->
+                ☰
             </button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#ebay-deals">eBay Deals</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#golf-lessons">Golf Lessons</a></li>
                     <li><a href="#services">Other Services</a></li>
@@ -521,14 +1171,177 @@
         <section id="home">
             <div class="container">
                 <div class="hero-content">
+                    <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/the_gf2.png?v=1749555836" alt="The Golfzone Daventry Logo" class="hero-logo">
                     <h1>Welcome to The Golfzone</h1>
-                    <p class="subtitle">at Daventry & District Golf Club</p>
-                    <div class="sale-banner">Sale Now On. Update your performance</div>
+                    <p class="subtitle">at Daventry & District Golf Club</p><BR>
+                    <p class="location"><strong>Northamptonshire PGA Teaching Professional</strong></p>
+                    <p class="hero-intro">Your premier destination for professional golf lessons, top-quality equipment, and advanced studio analysis.<br> Elevate your game with expert guidance and state-of-the-art facilities.</p>
+
                     <div class="hero-main-image-container">
-                         <img src="https://static.wixstatic.com/media/5e8a1a_2755f36ba4b84922a436b9cc72707730~mv2.jpg" alt="Richard Mudge - PGA Teaching Professional" class="hero-main-image">
-                         <img src="https://static.wixstatic.com/media/5e8a1a_a39fcd9ced18420a8d94390514310210~mv2.png" alt="PGA Logo" class="hero-logo pga-logo">
+                         <div class="hero-main-image-square">
+                             <img src="https://static.wixstatic.com/media/5e8a1a_2755f36ba4b84922a436b9cc72707730~mv2.jpg" alt="Richard Mudge - PGA Teaching Professional" class="hero-main-image">
+                         </div>
+                         <div class="pga-logo-container">
+                             <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/PGA.png?v=1749555206" alt="PGA Logo" class="pga-logo">
+                             <p class="pga-text">Richard Mudge <br> PGA Golf Professional Class AA Level III PGA Coach</p>
+                         </div>
                     </div>
-                    <p>Your premier destination for golf lessons, top-quality equipment, and advanced studio analysis. Elevate your game with expert guidance and state-of-the-art facilities.</p>
+
+                    <div class="services-highlight">
+                        <h4>Richard Mudge specialises in:</h4>
+                        <div class="bento-grid-specialist">
+                            <!-- Item 1 (Spans 2 columns) -->
+                            <div class="bento-item item-1 item-large has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/B1.png?v=1749639085'); --bg-position: center top;">
+                                <div class="bento-content">
+                                    <h5>Golf lessons for all abilities</h5>
+                                    <p>Personalised instruction for beginners to advanced players.</p>
+                                </div>
+                            </div>
+                            <!-- Item 2 (Spans 1 column) -->
+                            <div class="bento-item item-2 item-small has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/b2.png?v=1749639974'); --bg-color: rgba(0,0,0,0.22);">
+                                <div class="bento-content">
+                                    <h5>Individual Coaching</h5>
+                                    <p>Focused one-on-one sessions.</p>
+                                </div>
+                            </div>
+                            <!-- Item 3 (Spans 1 column) -->
+                            <div class="bento-item item-3 item-small has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/b3.png?v=1749640302'); --bg-color: rgba(0,0,0,0.22);">
+                                <div class="bento-content">
+                                    <h5>Group lessons</h5>
+                                    <p>Learn in a fun, social setting.</p>
+                                </div>
+                            </div>
+                            <!-- Item 4 (Spans 2 columns) -->
+                            <div class="bento-item item-4 item-large has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/b4.png?v=1749639811'); --bg-color: rgba(0,0,0,0.22);">
+                                <div class="bento-content">
+                                    <h5>Detailed analysis of ball flight</h5>
+                                    <p>Understand your shot with launch monitor data.</p>
+                                </div>
+                            </div>
+                            <!-- Item 5 (Spans 2 columns) -->
+                            <div class="bento-item item-5 item-large has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/b5.png?v=1749641024'); --bg-position: center bottom;">
+                                 <div class="bento-content">
+                                    <h5>Equipment checks</h5>
+                                    <p>Ensure your gear fits your game.</p>
+                                </div>
+                            </div>
+                            <!-- Item 6 (Spans 1 column) -->
+                            <div class="bento-item item-6 item-small has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/b6.png?v=1749641226'); --bg-color: rgba(0,0,0,0.22);">
+                                <div class="bento-content">
+                                    <h5>Equipment Advice</h5>
+                                    <p>Expert recommendations.</p>
+                                </div>
+                            </div>
+                            <!-- Item 7 (Spans 1 column) -->
+                            <div class="bento-item item-7 item-small has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/B7.png?v=1749639632'); --bg-color: rgba(0,0,0,0.25);">
+                                <div class="bento-content">
+                                    <h5>Customised fitting</h5>
+                                    <p>Play better with fitted clubs.</p>
+                                </div>
+                            </div>
+                            <!-- Item 8 (Spans 2 columns) -->
+                            <div class="bento-item item-8 item-large has-bg-image" style="--bg-image-url: url('https://cdn.shopify.com/s/files/1/0587/2150/1393/files/b8.png?v=1749640106'); --bg-position: center top;">
+                                <div class="bento-content">
+                                    <h5>Indoor Golf Simulator Studio</h5>
+                                    <p>Practice and play, rain or shine.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sale-banner-container">
+                        <div class="sale-banner style-enhanced">
+                            <span style="display: flex; gap: 0.2em; align-items: center;">
+                                <svg class="sale-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.79 6.63L2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="sale-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.79 6.63L2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="sale-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.79 6.63L2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </span>
+                            <span style="margin: 0 1em;">SALE NOW ON</span>
+                            <span style="display: flex; gap: 0.2em; align-items: center;">
+                                <svg class="sale-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.79 6.63L2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="sale-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.79 6.63L2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <svg class="sale-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2l-2.79 6.63L2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- eBay Deals Section MOVED HERE -->
+                    <section id="ebay-deals"> <!-- Kept as section for semantic grouping, ID for nav link -->
+                        <div class="container"> <!-- Container for centering content -->
+                            <h3>Latest Deals from Our eBay Store</h3>
+                            <div class="ebay-intro">
+                                <p>Check out some of our featured items currently available on eBay. <BR> Grab a bargain today! <br><strong>We have the lowest prices in the UK on Many Items</strong></p>
+                                <p><em>Please note:<BR> Products and availability are subject to change. <br></em></p>
+                            </div>
+
+                            <div class="ebay-slider-container">
+                                <div class="ebay-slides">
+                                    <!-- Slide 1 -->
+                                    <div class="ebay-slide">
+                                        <div class="ebay-product-card">
+                                            <!-- IMPORTANT: Replace placeholder.co URL with actual eBay image URL -->
+                                            <img src="https://i.ebayimg.com/images/g/aaIAAeSwx29n2CGi/s-l960.webp" alt="Featured Golf Product 1">
+                                            <h4>Titleist Pro V1 x Golf balls 2 Dozen</h4>
+                                            <p class="price">£81.84</p>
+                                            <!-- IMPORTANT: Replace # with actual eBay product link -->
+                                            <a href="https://www.ebay.co.uk/itm/388350146767?_skw=brand+new+titleist+pro+v1+golf+balls" class="view-on-ebay-btn" target="_blank" rel="noopener noreferrer">View on eBay</a>
+                                        </div>
+                                        <div class="ebay-product-card">
+                                            <!-- IMPORTANT: Replace placeholder.co URL with actual eBay image URL -->
+                                            <img src="https://i.ebayimg.com/images/g/9JAAAeSwLD1oK2AR/s-l1600.webp" alt="Featured Golf Product 2">
+                                            <h4>Motocaddy New M7 GPS Electric Trolley</h4>
+                                            <p class="price">£1,230.72</p>
+                                            <!-- IMPORTANT: Replace # with actual eBay product link -->
+                                            <a href="https://www.ebay.co.uk/itm/388440058119" class="view-on-ebay-btn" target="_blank" rel="noopener noreferrer">View on eBay</a>
+                                        </div>
+                                        <div class="ebay-product-card">
+                                            <!-- IMPORTANT: Replace placeholder.co URL with actual eBay image URL -->
+                                            <img src="https://i.ebayimg.com/images/g/eu8AAeSw~Bpn2YWd/s-l960.webp" alt="Featured Golf Product 3">
+                                            <h4>Wilson Dynapower Max Irons 5-SW 2025</h4>
+                                            <p class="price">£628.92</p>
+                                            <!-- IMPORTANT: Replace # with actual eBay product link -->
+                                            <a href="https://www.ebay.co.uk/itm/388283332825" class="view-on-ebay-btn" target="_blank" rel="noopener noreferrer">View on eBay</a>
+                                        </div>
+                                    </div>
+                                    <!-- Slide 2 -->
+                                    <div class="ebay-slide">
+                                        <div class="ebay-product-card">
+                                            <!-- IMPORTANT: Replace placeholder.co URL with actual eBay image URL -->
+                                            <img src="https://i.ebayimg.com/images/g/JHQAAeSwC~doRZE4/s-l1600.webp" alt="Featured Golf Product 4">
+                                            <h4>Odyssey Ai One Square 2 Square Jailbird Cruiser Putter - 2025- 38"</h4>
+                                            <p class="price">£276.32</p>
+                                            <!-- IMPORTANT: Replace # with actual eBay product link -->
+                                            <a href="https://www.ebay.co.uk/itm/388546374977?" class="view-on-ebay-btn" target="_blank" rel="noopener noreferrer">View on eBay</a>
+                                        </div>
+                                        <div class="ebay-product-card">
+                                            <!-- IMPORTANT: Replace placeholder.co URL with actual eBay image URL -->
+                                            <img src="https://i.ebayimg.com/images/g/ZpgAAeSwVXZoKEWZ/s-l1600.webp" alt="Featured Golf Product 5">
+                                            <h4>Wilson Dynapower Max 7 Wood - 2025 - CHEAPEST IN UK - CUSTOM OPTION</h4>
+                                            <p class="price">£198.32</p>
+                                            <!-- IMPORTANT: Replace # with actual eBay product link -->
+                                            <a href="https://www.ebay.co.uk/itm/388429065770?" class="view-on-ebay-btn" target="_blank" rel="noopener noreferrer">View on eBay</a>
+                                        </div>
+                                        <div class="ebay-product-card">
+                                            <!-- IMPORTANT: Replace placeholder.co URL with actual eBay image URL -->
+                                            <img src="https://i.ebayimg.com/images/g/IH0AAeSwlNBoKEsm/s-l1600.webp" alt="Featured Golf Product 6">
+                                            <h4>Wilson Staff Model Blade Irons - 2025 - CHEAPEST IN UK - 4-PW - Stiff</h4>
+                                            <p class="price">£746.22</p>
+                                            <!-- IMPORTANT: Replace # with actual eBay product link -->
+                                            <a href="https://www.ebay.co.uk/itm/388429145069?" class="view-on-ebay-btn" target="_blank" rel="noopener noreferrer">View on eBay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ebay-slider-nav">
+                                <button id="ebayPrevBtn">Previous</button>
+                                <button id="ebayNextBtn">Next</button>
+                            </div>
+                            <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem; color: #666;">
+                                
+                            </p>
+                        </div>
+                    </section>
+                    <!-- END eBay Deals Section in new location -->
                 </div>
             </div>
         </section>
@@ -536,17 +1349,18 @@
         <section id="about">
             <div class="container">
                 <h2>Meet Your PGA Professional</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <h3>Richard Mudge</h3>
-                        <p><strong>PGA Golf Professional</strong></p>
-                        <p>With years of experience and a passion for golf, Richard Mudge is dedicated to helping golfers of all abilities improve their game. As a Class AA Level III PGA Coach, Richard offers personalized instruction tailored to your unique swing and goals.</p>
-                        <p>Whether you're a beginner looking to learn the fundamentals or an experienced player aiming to fine-tune your skills, Richard provides expert advice and a supportive learning environment.</p>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://static.wixstatic.com/media/5e8a1a_2755f36ba4b84922a436b9cc72707730~mv2.jpg" alt="Richard Mudge">
-                        <img src="https://static.wixstatic.com/media/5e8a1a_a39fcd9ced18420a8d94390514310210~mv2.png" alt="PGA Logo" class="pga-logo">
-                    </div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <img src="https://static.wixstatic.com/media/5e8a1a_2755f36ba4b84922a436b9cc72707730~mv2.jpg" alt="Richard Mudge" style="max-width: 300px; border-radius: 16px; box-shadow: 0 4px 24px rgba(46,125,50,0.13); margin-bottom: 2rem;">
+                </div>
+                <div class="about-text" style="max-width: 700px; margin: 0 auto; text-align: center;">
+                    <h3>Richard Mudge - Class AA Level III PGA Coach</h3>
+                    <p><strong>Northamptonshire PGA Teaching Professional</strong></p>
+                    <p>With years of experience and a passion for golf, Richard Mudge is dedicated to helping golfers of all abilities improve their game. As a Class AA Level III PGA Coach, Richard offers personalized instruction tailored to your unique swing and goals.</p>
+                    <p>Whether you're a beginner looking to learn the fundamentals or an experienced player aiming to fine-tune your skills, Richard provides expert advice and a supportive learning environment.</p>
+                    <p>Richard specializes in both individual coaching and group lessons, utilizing advanced technology including detailed ball flight analysis, HMT, and GC2 launch monitor to help you understand and perfect your game.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; margin-top: 1.5rem; margin-bottom: 0.5rem;">
+                    <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/PGA.png?v=1749555206" alt="PGA Logo" style="max-height: 180px; width: auto;">
                 </div>
             </div>
         </section>
@@ -554,67 +1368,83 @@
         <section id="golf-lessons">
             <div class="container">
                 <h2>Learn At Your Own Pace</h2>
+                <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                    <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/GL.png?v=1749642617" alt="Golf Lessons" style="max-width: 400px; border-radius: 16px; box-shadow: 0 4px 24px rgba(46,125,50,0.13);">
+                </div>
                 <div class="lesson-intro">
-                    <p>I specialise in coaching for individuals and groups, from complete beginners to elite golfers. It is important that we discuss what you hope to achieve before we start, to help you meet your objectives and enjoy the lessons.</p>
-                    <p>Tuition is either on the outdoor range or indoors in the Golf Studio.</p>
+                    <p>I specialise in coaching for individuals and groups, from complete beginners to elite golfers.<br>It is important that we discuss what you hope to achieve before we start,<br> to help you meet your objectives and enjoy the lessons.</p>
+                    <p>Tuition is available either on the outdoor range or indoors in the Golf Studio, <br> with all lessons including advanced technology analysis.</p>
                 </div>
 
                 <h4>Individual Tuition Fees</h4>
                 <div class="lesson-pricing-grid">
-                    <div class="price-card">
+                    <a href="#contact" class="price-card-link"><div class="price-card">
                         <p class="duration-package">30 Minutes</p>
                         <p class="price">£28</p>
-                    </div>
-                    <div class="price-card">
+                    </div></a>
+                    <a href="#contact" class="price-card-link"><div class="price-card">
                         <p class="duration-package">1 Hour</p>
                         <p class="price">£50</p>
-                    </div>
+                    </div></a>
                 </div>
 
                 <h4>Lesson Packages</h4>
                 <div class="lesson-pricing-grid">
-                    <div class="price-card">
+                    <a href="#contact" class="price-card-link"><div class="price-card">
                         <p class="duration-package">4 x 30 Minute Lessons</p>
                         <p class="price">£100</p>
-                    </div>
-                    <div class="price-card">
+                    </div></a>
+                    <a href="#contact" class="price-card-link"><div class="price-card">
                         <p class="duration-package">4 x 1 Hour Lessons</p>
                         <p class="price">£180</p>
-                    </div>
+                    </div></a>
                 </div>
-                <p style="text-align:center;">Purchase a package and get preferential rates on future lessons and Golf Studio hire.</p>
+                <p style="text-align:center; font-weight: 600;">Purchase a package and get preferential rates on future lessons and Golf Studio hire.</p>
 
                 <div class="lesson-includes">
-                    <p><strong>*Video analysis, use of HMT and GC2 launch monitor is included in all individual lessons and packages.</strong></p>
+                    <div class="info-flex">
+                        <img src="https://static.wixstatic.com/media/5e8a1a_02a29191120947f38be17ce6b3adeadf~mv2.jpg/v1/fill/w_196,h_196,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pro-img-9971-1592928546_edited.jpg" alt="Video Analysis Included" class="info-img">
+                        <p style="margin: 0;"><strong>Video analysis, use of HMT and GC2 launch monitor is included in all individual lessons and packages.</strong></p>
+                    </div>
                 </div>
 
                 <div class="junior-info">
-                    <h4>Junior Golfers</h4>
-                    <p>Juniors (under 18 years) receive a reduction of <strong>40% on the full lesson price</strong>.</p>
-                    <p>I also run <strong>Saturday group sessions</strong> for juniors.</p>
+                    <div class="info-flex">
+                        <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/Leogolfing.png?v=1749571005" alt="Junior Golfers" class="info-img">
+                        <div>
+                            <h4>Junior Golfers & Group Sessions</h4>
+                            <p>Juniors (under 18 years) receive a reduction of <strong>40% on the full lesson price</strong>.</p>
+                            <p>I also run <strong>Saturday group sessions</strong> for juniors and offer group lessons for all skill levels.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="services">
             <div class="container">
-                <h2>Other Pro Services</h2>
+                <h2>Professional Services for all Levels of Amateur Golfers</h2>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+                    <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/richgolf.png?v=1749571833" alt="Richard Mudge Golf" class="services-uniform-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/blgolf.png?v=1749635427" alt="Blue Golfers" class="services-uniform-img services-uniform-img-top">
+                    <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/JLGOLF.png?v=1749573111" alt="Junior Golfers" class="services-uniform-img">
+                </div>
                 <div class="services-grid">
                      <div class="service-card">
                         <h3>Detailed Ball Flight Analysis</h3>
-                        <p>Utilize our studio technology to understand and perfect your shots.</p>
+                        <p>Utilize our advanced studio technology including HMT and GC2 launch monitor to understand and perfect your shots with precise data analysis.</p>
                     </div>
                     <div class="service-card">
                         <h3>Customised Club Fitting</h3>
-                        <p>Ensure your clubs are perfectly matched to your swing for optimal performance.</p>
+                        <p>Ensure your clubs are perfectly matched to your swing for optimal performance. Professional fitting service available.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Equipment Checks</h3>
-                        <p>Let us assess your current gear and provide expert recommendations.</p>
+                        <h3>Equipment Checks & Analysis</h3>
+                        <p>Comprehensive assessment of your current gear with expert recommendations for improvement.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Advice on Clubs & Equipment</h3>
-                        <p>Unbiased guidance to help you choose the right equipment for your game.</p>
+                        <h3>Expert Advice on Equipment</h3>
+                        <p>Unbiased guidance to help you choose the right equipment for your game and budget.</p>
                     </div>
                 </div>
             </div>
@@ -623,20 +1453,25 @@
         <section id="shop-studio">
             <div class="container">
                 <h2>Golf Shop & Studio</h2>
+                <div class="shop-images-row">
+                    <img src="https://static.wixstatic.com/media/5e8a1a_219d8911cfad4dc38f809d93a7209bc5~mv2.jpg/v1/fill/w_410,h_223,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/proshop-img-9856-1592925106.jpg" alt="Golf Shop 1" class="shop-studio-img">
+                    <img src="https://static.wixstatic.com/media/5e8a1a_b3f4526af7b8464aa67760267746d7c0~mv2.jpg/v1/fill/w_299,h_162,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pro-shop-img-9850-1592929936.jpg" alt="Golf Shop 2" class="shop-studio-img">
+                    <img src="https://static.wixstatic.com/media/5e8a1a_ce38dc3771fa417b8b9262261387047d~mv2.jpg/v1/fill/w_381,h_207,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pro-img-9970-1592928569.jpg" alt="Golf Shop 3" class="shop-studio-img">
+                </div>
                 <div class="shop-studio-content">
                     <div class="shop-info">
-                        <h3>Well-Stocked Golf Shop</h3>
-                        <p>Browse a wide selection of major makes of clubs, accessories, and clothing. We offer competitive pricing and expert advice to help you find exactly what you need.</p>
-                        <p>As part of the Foremost Golf retail group, we ensure quality and value.</p>
-                        <img src="https://static.wixstatic.com/media/5e8a1a_71f92993131b4877bb5f4054095ea66a~mv2.gif" alt="Foremost Golf Logo" class="foremost-logo">
+                        <h3>Well-Stocked Golf Shop</h3> <!-- Changed to h3 -->
+                        <p>Browse a comprehensive selection of major makes of clubs, accessories, and clothing. We offer competitive pricing and expert advice to help you find exactly what you need.</p>
+                        <p>As part of the Foremost Golf retail group - the largest golf retail group in the UK - we ensure quality, value, and the latest equipment.</p>
+                        <img src="https://cdn.shopify.com/s/files/1/0587/2150/1393/files/foremost.png?v=1749564136" alt="Foremost Golf Logo" class="foremost-logo">
                     </div>
                     <div class="studio-info">
-                        <h3>Indoor Golf Simulator Studio</h3>
-                        <p>Our state-of-the-art indoor golf simulator provides a perfect environment for practice, lessons, and custom fitting, regardless of the weather. Get precise data on your swing and ball flight.</p>
+                        <h3>Indoor Golf Simulator Studio</h3> <!-- Changed to h3 -->
+                        <p>Our state-of-the-art indoor golf simulator provides a perfect environment for practice, lessons, and custom fitting, regardless of the. Get precise data on your swing and ball flight with our advanced technology.</p>
                         <div class="opening-hours">
                             <h4>Shop Opening Hours:</h4>
-                            <p>8:30 am to 6:00 pm daily</p>
-                            <p>(or later by prior appointment for lessons or Golf Studio hire)</p>
+                            <p><strong>8:30 am to 6:00 pm daily</strong></p>
+                            <p>Later availability by prior appointment for lessons <br>or Golf Studio hire can be arranged</p>
                         </div>
                     </div>
                 </div>
@@ -646,19 +1481,22 @@
         <section id="contact">
             <div class="container">
                 <h2>Get In Touch</h2>
-                <div class="contact-intro">
-                    <p>Please visit me at:</p>
+                <div class="contact-card">
+                    
                     <p><strong>DAVENTRY & DISTRICT GOLF CLUB</strong><br>
                     Norton Road, Daventry NN11 2LS</p>
-                    <p>Contact Richard Mudge on:<br>
-                    <a href="tel:07968064686">07968 064686</a></p>
-                    <p>Email:<br>
-                    <a href="mailto:richard.mudge@foremostgolf.com">richard.mudge@foremostgolf.com</a></p>
+                    <div class="contact-map" style="margin: 1.5rem 0 1rem 0;">
+                        <iframe src="https://www.google.com/maps?q=DAVENTRY+%26+DISTRICT+GOLF+CLUB,+Norton+Road,+Daventry+NN11+2LS&output=embed" width="100%" height="260" style="border:0; border-radius: 12px; box-shadow: 0 2px 12px rgba(46,125,50,0.10);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p><strong>Contact Richard Mudge on:</strong><br>
+                    <a href="tel:07968064686">📞 07968 064686</a></p>
+                    <p><strong>Email:</strong><br>
+                    <a href="mailto:richard.mudge@foremostgolf.com">✉️ richard.mudge@foremostgolf.com</a></p>
                 </div>
 
                 <div class="contact-form-container">
-                    <h3>Leave a Message</h3>
-                    <form action="YOUR_FORMSPREE_ENDPOINT" method="POST"> <!-- Replace with your Formspree endpoint -->
+                    <h3>Lesson & Equipment Enquiries</h3> <!-- Changed to h3 -->
+                    <form action="YOUR_FORMSPREE_ENDPOINT" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
@@ -675,10 +1513,12 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
+                        <input type="hidden" name="_replyto" value="email"> 
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
-                    <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem;">
-                        Note: For this form to be fully functional, the 'action' attribute needs to be set to a service like Formspree.io.
+                    <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem; color: #666;">
+                        For this form to be fully functional, the 'action' attribute needs to be set to your unique URL from a service like Formspree.io.
+                        This service will then forward submissions to richard.mudge@foremostgolf.com once configured.
                     </p>
                 </div>
             </div>
@@ -687,7 +1527,8 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>© <span id="currentYear"></span> The Golfzone Daventry. All Rights Reserved. Modernized with care.</p>
+            <p>© <span id="currentYear"></span> The Golfzone Daventry. All Rights Reserved.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Professional Golf Lessons • Equipment • Custom Fitting • Northamptonshire <br>©LeoJoseph</p> <br>
         </div>
     </footer>
 
@@ -700,7 +1541,7 @@
             const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true' || false;
             menuToggle.setAttribute('aria-expanded', !isExpanded);
             mainNav.classList.toggle('active');
-            menuToggle.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰'; // Close icon / Hamburger
+            menuToggle.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰';
         });
 
         // Close mobile menu when a link is clicked
@@ -716,31 +1557,87 @@
         });
         
         // Active nav link highlighting on scroll
-        const sections = document.querySelectorAll('section');
+        const sections = document.querySelectorAll('main section'); 
         const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'));
 
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - (headerHeight + 70) ) { // Increased offset a bit
+                if (pageYOffset >= sectionTop - (headerHeight + 70) ) { 
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
+                if (link.getAttribute('href') && link.getAttribute('href').substring(1) === current) {
                     link.classList.add('active');
                 }
             });
-             if (current === '' && pageYOffset < (sections[0].offsetTop - (headerHeight + 70))) {
-                 document.querySelector('.main-nav a[href="#home"]').classList.add('active');
+             if (current === '' && pageYOffset < (sections.length > 0 ? (sections[0].offsetTop - (headerHeight + 70)) : 50)) {
+                 const homeLink = document.querySelector('.main-nav a[href="#home"]');
+                 if (homeLink) homeLink.classList.add('active');
             }
         });
 
         // Set current year in footer
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // eBay Slider Basic Functionality
+        const ebaySlidesContainer = document.querySelector('.ebay-slides');
+        const ebaySlides = document.querySelectorAll('.ebay-slide');
+        const ebayNextBtn = document.getElementById('ebayNextBtn');
+        const ebayPrevBtn = document.getElementById('ebayPrevBtn');
+        let ebayCurrentIndex = 0;
+
+        function updateEbaySlider() {
+            if (ebaySlidesContainer && ebaySlides.length > 0) {
+                ebaySlidesContainer.style.transform = `translateX(-${ebayCurrentIndex * 100}%)`;
+                 if(ebayPrevBtn) ebayPrevBtn.disabled = ebayCurrentIndex === 0;
+                 if(ebayNextBtn) ebayNextBtn.disabled = ebayCurrentIndex === ebaySlides.length - 1;
+            }
+        }
+
+        if (ebayNextBtn && ebayPrevBtn && ebaySlides.length > 0) {
+            ebayNextBtn.addEventListener('click', () => {
+                if (ebayCurrentIndex < ebaySlides.length - 1) {
+                    ebayCurrentIndex++;
+                    updateEbaySlider();
+                }
+            });
+
+            ebayPrevBtn.addEventListener('click', () => {
+                if (ebayCurrentIndex > 0) {
+                    ebayCurrentIndex--;
+                    updateEbaySlider();
+                }
+            });
+            updateEbaySlider(); 
+        } else {
+            if(ebayNextBtn) ebayNextBtn.style.display = 'none';
+            if(ebayPrevBtn) ebayPrevBtn.style.display = 'none';
+        }
+
+        // Smooth scroll with offset for menu links
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetId === 'home') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (targetSection) {
+                        e.preventDefault();
+                        const yOffset = -headerHeight - 12; // 12px extra gap for shadow
+                        const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+
     </script>
 </body>
 </html>
